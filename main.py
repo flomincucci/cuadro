@@ -1,7 +1,10 @@
 import argparse
-import glib
-import gtk
-import webkit
+import gi
+gi.require_version('Gtk', '3.0')
+gi.require_version('WebKit', '3.0')
+from gi.repository import GLib as glib
+from gi.repository import Gtk as gtk
+from gi.repository import WebKit as webkit
 
 
 class ReloadView:
@@ -25,14 +28,14 @@ class ReloadView:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-w", "--width", dest="width",
-                      help="width of the image",
-                      default=1920)
+                        help="width of the image",
+                        default=1920)
     parser.add_argument("-hh", "--height", dest="height",
-                      help="height of the image",
-                      default=1080)
+                        help="height of the image",
+                        default=1080)
     parser.add_argument("-t", "--time", dest="ttr",
-                      help="time to refresh the image",
-                      default=10)
+                        help="time to refresh the image",
+                        default=10)
     args = parser.parse_args()
 
     ReloadView(width=args.width, height=args.height,
